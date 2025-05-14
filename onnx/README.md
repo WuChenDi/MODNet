@@ -5,8 +5,6 @@
 You can download the pre-trained **Image Matting Model** (ONNX format) from the following link:
 👉 [Download from Google Drive](https://drive.google.com/drive/folders/1OUFBMSD0RwcfIDXd4mvv8eBJv-NdnzDW?usp=sharing)
 
----
-
 ### 🛠️ Steps to Export MODNet to ONNX
 
 > Ensure you are in the root directory of the MODNet project.
@@ -19,10 +17,7 @@ Download the model from the link above and place it in the following directory:
 MODNet/pretrained/
 ```
 
-Example filename:
-`modnet_photographic_portrait_matting.ckpt`
-
----
+Example filename: `modnet_photographic_portrait_matting.ckpt`
 
 #### 2. Install Dependencies
 
@@ -35,8 +30,6 @@ pip install -r onnx/requirements.txt
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx/requirements.txt --timeout 1000
 ```
 
----
-
 #### 3. Export the ONNX Model
 
 ```bash
@@ -44,8 +37,6 @@ python -m onnx.export_onnx \
   --ckpt-path=pretrained/modnet_photographic_portrait_matting.ckpt \
   --output-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
-
----
 
 #### 4. Run Inference with ONNX Model
 
