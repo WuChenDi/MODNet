@@ -26,7 +26,7 @@ Example filename:
 
 #### 2. Install Dependencies
 
-Install required dependencies (preferably using Tsinghua mirror for faster speed in mainland China):
+Install required dependencies:
 
 ```bash
 pip install -r onnx/requirements.txt
