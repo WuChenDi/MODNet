@@ -1,3 +1,5 @@
-# wuchendi/MODNet (Matting Objective Decomposition Network)
+# MODNet
 
-Trimap-Free Portrait Matting in Real Time
+> Trimap-Free Portrait Matting in Real Time
+>
+> [wuchendi/MODNet - huggingface](https://huggingface.co/wuchendi/MODNet)
