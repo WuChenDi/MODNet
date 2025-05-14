@@ -8,7 +8,7 @@ Arguments:
 
 Example:
 python inference_onnx.py \
-    --image-path=demo.jpg --output-path=matte.png --model-path=modnet.onnx
+    --image-path=logo.jpg --output-path=matte.png --model-path=pretrained/modnet_photographic_portrait_matting.onnx
 """
 
 import os
