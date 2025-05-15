@@ -1,0 +1,16 @@
+{
+  "name": "@wuchendi/modnet",
+  "type": "module",
+  "version": "1.0.0",
+  "author": "wudi",
+  "scripts": {
+    "dev": "tsx src/index.ts"
+  },
+  "dependencies": {
+    "@huggingface/transformers": "^3.5.1"
+  },
+  "devDependencies": {
+    "tsx": "^4.19.4",
+    "typescript": "^5.8.3"
+  }
+}
