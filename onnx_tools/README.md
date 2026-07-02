@@ -18,6 +18,15 @@ Example filename: `modnet_photographic_portrait_matting.ckpt`
 
 ### 2. Install dependencies
 
+Create and activate a virtual environment first:
+
+```bash
+python3 -m venv venv
+source venv/bin/activate        # Windows: venv\Scripts\activate
+```
+
+Then install the requirements:
+
 ```bash
 pip install -r onnx_tools/requirements.txt
 
