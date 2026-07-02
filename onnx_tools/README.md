@@ -39,7 +39,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx_tools/requiremen
 Runs on GPU when available, otherwise CPU.
 
 ```bash
-python -m onnx_tools.export_onnx \
+python3 -m onnx_tools.export_onnx \
   --ckpt-path=pretrained/modnet_photographic_portrait_matting.ckpt \
   --output-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
@@ -56,7 +56,7 @@ output shape `(batch_size, 1, height, width)`.
 ### 4. Run inference with the ONNX model
 
 ```bash
-python -m onnx_tools.inference_onnx \
+python3 -m onnx_tools.inference_onnx \
   --image-path=examples/src/assets/Input.jpg \
   --output-path=pretrained/matte.png \
   --model-path=pretrained/modnet_photographic_portrait_matting.onnx
