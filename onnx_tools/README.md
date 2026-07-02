@@ -57,7 +57,7 @@ output shape `(batch_size, 1, height, width)`.
 
 ```bash
 python -m onnx_tools.inference_onnx \
-  --image-path=pretrained/logo.jpg \
+  --image-path=examples/src/assets/Input.jpg \
   --output-path=pretrained/matte.png \
   --model-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
