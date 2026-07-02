@@ -19,10 +19,10 @@ Example filename: `modnet_photographic_portrait_matting.ckpt`
 ### 2. Install dependencies
 
 ```bash
-pip install -r onnx/requirements.txt
+pip install -r onnx_tools/requirements.txt
 
 # Or using a mirror
-pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx/requirements.txt --timeout 1000
+pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx_tools/requirements.txt --timeout 1000
 ```
 
 ### 3. Export the ONNX model
@@ -30,7 +30,7 @@ pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx/requirements.txt
 Runs on GPU when available, otherwise CPU.
 
 ```bash
-python -m onnx.export_onnx \
+python -m onnx_tools.export_onnx \
   --ckpt-path=pretrained/modnet_photographic_portrait_matting.ckpt \
   --output-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
@@ -47,7 +47,7 @@ output shape `(batch_size, 1, height, width)`.
 ### 4. Run inference with the ONNX model
 
 ```bash
-python -m onnx.inference_onnx \
+python -m onnx_tools.inference_onnx \
   --image-path=pretrained/logo.jpg \
   --output-path=pretrained/matte.png \
   --model-path=pretrained/modnet_photographic_portrait_matting.onnx

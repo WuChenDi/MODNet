@@ -9,7 +9,7 @@ Arguments:
     --opset-version: ONNX opset version (default: 17)
 
 Example:
-    python -m onnx.export_onnx \
+    python -m onnx_tools.export_onnx \
         --ckpt-path=pretrained/modnet_photographic_portrait_matting.ckpt \
         --output-path=pretrained/modnet_photographic_portrait_matting.onnx
 """

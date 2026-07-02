@@ -7,7 +7,7 @@ Arguments:
     --model-path: path of the ONNX model
 
 Example:
-    python -m onnx.inference_onnx \
+    python -m onnx_tools.inference_onnx \
         --image-path=logo.jpg --output-path=matte.png \
         --model-path=pretrained/modnet_photographic_portrait_matting.onnx
 """
