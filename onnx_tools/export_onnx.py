@@ -61,6 +61,7 @@ if __name__ == '__main__':
             'output': {0: 'batch_size', 2: 'height', 3: 'width'},
         },
         opset_version=args.opset_version,
+        dynamo=False,  # use the legacy TorchScript exporter: embeds weights and honors dynamic_axes
     )
     onnx_size = os.path.getsize(args.output_path) / (1024 * 1024)
     print(f'ONNX model saved to: {args.output_path} ({onnx_size:.2f} MB)')
