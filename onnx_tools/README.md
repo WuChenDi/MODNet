@@ -58,3 +58,24 @@ python -m onnx_tools.inference_onnx \
 | `--image-path` | yes | Input image (a file) |
 | `--output-path` | yes | Path to save the predicted alpha matte |
 | `--model-path` | yes | Path to the ONNX model |
+
+## Notes for PyTorch 2.x export
+
+The export path was originally written for PyTorch 1.11. Three things are needed
+to make it work on PyTorch 2.x:
+
+- **`onnxscript` is required.** The PyTorch 2.x ONNX exporter imports `onnxscript`
+  internally, so it is listed in `requirements.txt`. PyTorch 1.11 did not need it.
+- **The tools live in `onnx_tools/`, not `onnx/`.** A local package named `onnx`
+  would shadow the installed `onnx` library on `sys.path`, breaking the exporter with
+  `ModuleNotFoundError: No module named 'onnx.external_data_helper'`.
+- **The exporter is pinned to `dynamo=False`** (legacy TorchScript exporter) in
+  `export_onnx.py`. The new `torch.export`-based exporter (default since PyTorch 2.9)
+  does not embed the weights here (it produces a ~0.6 MB file instead of ~25 MB) and
+  fails the opset down-conversion for this model. The legacy exporter embeds the
+  weights and honors `dynamic_axes`.
+
+Two warnings during export are expected and harmless: a `DeprecationWarning` about the
+legacy exporter, and a `UserWarning` that `instance_norm` is exported with `train=True`
+(instance norm uses per-instance statistics at inference by design — the upstream MODNet
+export emits the same warning).
