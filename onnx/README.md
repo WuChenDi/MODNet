@@ -3,9 +3,10 @@
 Export a trained MODNet checkpoint to ONNX and run portrait matting with ONNX Runtime.
 
 > **Note:** These scripts define an ONNX-friendly model (`modnet_onnx.py`) that outputs
-> only the alpha matte. `modnet_onnx.py` imports `src.models.backbones` from the official
-> [MODNet](https://github.com/ZHKKKe/MODNet) repository, so run them from the root of a
-> checked-out MODNet project (this `onnx/` folder placed inside it).
+> only the alpha matte. It uses the MobileNetV2 backbone vendored under
+> [`src/`](../src/README.md) (from the official [MODNet](https://github.com/ZHKKKe/MODNet)
+> repository), so the pipeline is self-contained — just run the commands below from the
+> repository root.
 
 ### 1. Download the pre-trained model
 
