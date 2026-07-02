@@ -1,36 +1,32 @@
-## MODNet ONNX Export Guide
+## MODNet ONNX Export & Inference Guide
 
-> 💡 **Note:** The ONNX export requires a PyTorch version higher than the one used in the official MODNet repository. It is recommended to use `torch==1.11.0`.
+Export a trained MODNet checkpoint to ONNX and run portrait matting with ONNX Runtime.
 
-You can download the pre-trained **Image Matting Model** (ONNX format) from the following link:
-👉 [Download from Google Drive](https://drive.google.com/drive/folders/1OUFBMSD0RwcfIDXd4mvv8eBJv-NdnzDW?usp=sharing)
+> **Note:** These scripts define an ONNX-friendly model (`modnet_onnx.py`) that outputs
+> only the alpha matte. `modnet_onnx.py` imports `src.models.backbones` from the official
+> [MODNet](https://github.com/ZHKKKe/MODNet) repository, so run them from the root of a
+> checked-out MODNet project (this `onnx/` folder placed inside it).
 
-### 🛠️ Steps to Export MODNet to ONNX
+### 1. Download the pre-trained model
 
-> Ensure you are in the root directory of the MODNet project.
+Download the checkpoint and place it under `pretrained/`:
 
-#### 1. Download the Pre-trained Model
-
-Download the model from the link above and place it in the following directory:
-
-```
-MODNet/pretrained/
-```
+👉 [Download from Google Drive](https://drive.google.com/drive/folders/1umYmlCulvIFNaqPjwod1SayFmSRHziyR?usp=sharing)
 
 Example filename: `modnet_photographic_portrait_matting.ckpt`
 
-#### 2. Install Dependencies
-
-Install required dependencies:
+### 2. Install dependencies
 
 ```bash
 pip install -r onnx/requirements.txt
 
-# Or using Tsinghua mirror
+# Or using a mirror
 pip install -i https://pypi.tuna.tsinghua.edu.cn/simple -r onnx/requirements.txt --timeout 1000
 ```
 
-#### 3. Export the ONNX Model
+### 3. Export the ONNX model
+
+Runs on GPU when available, otherwise CPU.
 
 ```bash
 python -m onnx.export_onnx \
@@ -38,7 +34,16 @@ python -m onnx.export_onnx \
   --output-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
 
-#### 4. Run Inference with ONNX Model
+| Argument | Required | Default | Description |
+| --- | --- | --- | --- |
+| `--ckpt-path` | yes | — | Path to the `.ckpt` checkpoint to convert |
+| `--output-path` | yes | — | Path for the exported `.onnx` model |
+| `--opset-version` | no | `17` | ONNX opset version |
+
+The exported model has a dynamic input shape `(batch_size, 3, height, width)` and
+output shape `(batch_size, 1, height, width)`.
+
+### 4. Run inference with the ONNX model
 
 ```bash
 python -m onnx.inference_onnx \
@@ -46,3 +51,9 @@ python -m onnx.inference_onnx \
   --output-path=pretrained/matte.png \
   --model-path=pretrained/modnet_photographic_portrait_matting.onnx
 ```
+
+| Argument | Required | Description |
+| --- | --- | --- |
+| `--image-path` | yes | Input image (a file) |
+| `--output-path` | yes | Path to save the predicted alpha matte |
+| `--model-path` | yes | Path to the ONNX model |
