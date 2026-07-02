@@ -5,6 +5,10 @@
 ONNX export/inference tooling and a Transformers.js example for the
 [MODNet](https://github.com/ZHKKKe/MODNet) portrait matting model.
 
+Derived from the official [ZHKKKe/MODNet](https://github.com/ZHKKKe/MODNet)
+repository. The original work is by its authors; this repository adds ONNX
+export/inference scripts and a Transformers.js usage example on top of it.
+
 ## Links
 
 - [wuchendi/MODNet — Hugging Face](https://huggingface.co/wuchendi/MODNet)

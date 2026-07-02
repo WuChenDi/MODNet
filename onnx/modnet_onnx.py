@@ -1,4 +1,7 @@
 """
+Derived from the official MODNet model definition:
+https://github.com/ZHKKKe/MODNet/blob/master/src/models/modnet.py
+
 This file contains a modified version of the original file `modnet.py` without
 `pred_semantic` and `pred_details` as these both returns None when `inference=True`
 
