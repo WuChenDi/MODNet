@@ -1,8 +1,6 @@
 """ This file is adapted from https://github.com/thuyngch/Human-Segmentation-PyTorch"""
 
 import math
-import json
-from functools import reduce
 
 import torch
 from torch import nn
@@ -171,7 +169,7 @@ class MobileNetV2(nn.Module):
 		return x
 
 	def _load_pretrained_model(self, pretrained_file):
-		pretrain_dict = torch.load(pretrained_file, map_location='cpu')
+		pretrain_dict = torch.load(pretrained_file, map_location='cpu', weights_only=True)
 		model_dict = {}
 		state_dict = self.state_dict()
 		print("[MobileNetV2] Loading pretrained model...")

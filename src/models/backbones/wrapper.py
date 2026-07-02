@@ -1,5 +1,4 @@
 import os
-from functools import reduce
 
 import torch
 import torch.nn as nn
@@ -78,5 +77,5 @@ class MobileNetV2Backbone(BaseBackbone):
             print('cannot find the pretrained mobilenetv2 backbone')
             exit()
         
-        ckpt = torch.load(ckpt_path)
+        ckpt = torch.load(ckpt_path, map_location='cpu', weights_only=True)
         self.model.load_state_dict(ckpt)
