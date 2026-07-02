@@ -17,7 +17,7 @@ export/inference scripts and a Transformers.js usage example on top of it.
 
 | Path | Description |
 | --- | --- |
-| [`onnx/`](onnx/README.md) | Export a MODNet checkpoint to ONNX and run inference with ONNX Runtime |
+| [`onnx_tools/`](onnx_tools/README.md) | Export a MODNet checkpoint to ONNX and run inference with ONNX Runtime |
 | [`examples/`](examples/README.md) | Portrait matting in JS/TS via `@huggingface/transformers` |
 | [`pretrained/`](pretrained/README.md) | Location for downloaded pre-trained models |
 | [`src/`](src/README.md) | MobileNetV2 backbone vendored from upstream MODNet (used by the ONNX pipeline) |
@@ -25,4 +25,4 @@ export/inference scripts and a Transformers.js usage example on top of it.
 ## Quick start
 
 - **Web / Node.js** — see [`examples/`](examples/README.md) to run matting with Transformers.js.
-- **Python / ONNX** — see [`onnx/`](onnx/README.md) to export a checkpoint and run ONNX Runtime inference.
+- **Python / ONNX** — see [`onnx_tools/`](onnx_tools/README.md) to export a checkpoint and run ONNX Runtime inference.

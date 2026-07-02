@@ -3,9 +3,9 @@
 The files under `src/` are vendored from the official
 [ZHKKKe/MODNet](https://github.com/ZHKKKe/MODNet) repository
 (`src/`, Apache License 2.0) so that the ONNX export pipeline in
-[`onnx/`](../onnx/README.md) can run without cloning the upstream project.
+[`onnx_tools/`](../onnx_tools/README.md) can run without cloning the upstream project.
 
-Only the backbone package required by `onnx/modnet_onnx.py` is included:
+Only the backbone package required by `onnx_tools/modnet_onnx.py` is included:
 
 ```
 src/models/backbones/
@@ -15,7 +15,7 @@ src/models/backbones/
 ```
 
 The full model definition (`src/models/modnet.py`) and training code are **not**
-vendored — `onnx/modnet_onnx.py` provides an ONNX-friendly replacement of the model.
+vendored — `onnx_tools/modnet_onnx.py` provides an ONNX-friendly replacement of the model.
 
 ## Changes from upstream
 
